@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surcursales</title>
+    <link rel="stylesheet" type="text/css" href="/css/surcursales.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Mostrar tarjetas con animación
+            $(".barra-busqueda button").click(function () {
+                $(".tarjeta-tienda").each(function (indice) {
+                    $(this).delay(200 * indice).animate({
+                        opacity: 1,
+                        transform: "scale(1)"
+                    }, {
+                        duration: 600,
+                        step: function (now, fx) {
+                            if (fx.prop === "transform") {
+                                $(this).css("transform", `scale(${now})`);
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Efecto de los botones
+            $(".tarjeta-tienda button").hover(
+                function () {
+                    $(this).css("background-color", "#a00000");
+                },
+                function () {
+                    $(this).css("background-color", "#d32f2f");
+                }
+            );
+
+            // efecto tarjetas
+            $(".tarjeta-tienda").hover(
+                function () {
+                    $(this).css({ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" });
+                },
+                function () {
+                    $(this).css({ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" });
+                }
+            );
+
+            // Botón de scroll hacia arriba
+            const botonScroll = $("<button>").text("↑").css({
+                position: "fixed",
+                bottom: "20px",
+                right: "20px",
+                padding: "10px",
+                backgroundColor: "#d32f2f",
+                color: "#fff",
+                border: "none",
+                borderRadius: "50%",
+                cursor: "pointer",
+                display: "none",
+                zIndex: 1000
+            });
+
+            $("body").append(botonScroll);
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 200) {
+                    botonScroll.fadeIn();
+                } else {
+                    botonScroll.fadeOut();
+                }
+            });
+
+            botonScroll.click(function () {
+                $("html, body").animate({ scrollTop: 0 }, 800);
+            });
+
+            // Efecto de buscar
+            $(".barra-busqueda button").hover(
+                function () {
+                    $(this).fadeTo(100, 0.5).fadeTo(100, 1);
+                }
+            );
+        });
+    </script>
+</head>
+<header class="header">
+    <div class="menu container ">
+        <div class="logoImg"> <img src="imagenes/index/don-luciano.png" alt=""> </div>
+        <input type="checkbox" id="menu">
+        <label for="menu"><img src="imagenes/index/menu.png" class="menu-icono" alt=""></label>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Nosotros.html">Nosotros</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="contactanos.html">Contactanos</a></li>
+                <li><a href="surcursales.html">Sucursales</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<body>
+
+    <div class="contenedor">
+        <div class="busqueda">
+            <h2>Encuentra el local que necesitas</h2>
+            <p>Las ofertas especiales y los precios pueden variar según la ubicación de Don Luciano Pizzeria.</p>
+            <div class="barra-busqueda">
+                <input type="text" placeholder="Ingresa nombre de tienda o dirección">
+                <button>Buscar</button>
+            </div>
+        </div>
+        <div class="resultados">
+            <div class="tarjeta-tienda">
+                <h3>Tienda Plaza Norte</h3>
+                <p>Av. Tomas Valle 1820, Lima</p>
+                <p>Teléfono: 606 - 0000</p>
+                <div class="tipo-envio">
+                    <span>🚴‍♂️ Delivery</span>
+                    <span>🛒 Retiro</span>
+                </div>
+                <button>Ver Local</button>
+            </div>
+            <div class="tarjeta-tienda">
+                <h3>Tienda Larcomar</h3>
+                <p>Malecón de la Reserva 610, Miraflores</p>
+                <p>Teléfono: 606 - 1111</p>
+                <div class="tipo-envio">
+                    <span>🚴‍♂️ Delivery</span>
+                </div>
+                <button>Ver Local</button>
+            </div>
+            <div class="resultados">
+                <div class="tarjeta-tienda">
+                    <h3>Tienda Plaza Norte</h3>
+                    <p>Av. Tomas Valle 1820, Lima</p>
+                    <p>Teléfono: 606 - 0000</p>
+                    <div class="tipo-envio">
+                        <span>🚴‍♂️ Delivery</span>
+                        <span>🛒 Retiro</span>
+                    </div>
+                    <button>Ver Local</button>
+                </div>
+                <div class="tarjeta-tienda">
+                    <h3>Tienda Larcomar</h3>
+                    <p>Malecón de la Reserva 610, Miraflores</p>
+                    <p>Teléfono: 606 - 1111</p>
+                    <div class="tipo-envio">
+                        <span>🚴‍♂️ Delivery</span>
+                    </div>
+                    <button>Ver Local</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+    <footer class="footer ">
+        <P class="text1"> Don Luciano tu mejor Opción </P>
+        <P class="text1"> @2024 | Todos los derechos reservados </P>
+        <div class="footer-links">
+            <div class="iconos">
+                <img src="imagenes/index/s1.svg" alt="">
+                <img src="imagenes/index/s2.svg" alt="">
+                <img src="imagenes/index/s3.svg" alt="">
+                <img src="imagenes/index/s4.svg" alt="">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,324 @@
+// Declaración de variables
+$fondo: #fff;
+$tipo_letra: Arial, sans-serif;
+$columna: column;
+$ancho_maximo: 100%;
+$colorico: #f04f23;
+$negrita: bold;
+$background_separador: #f04f23;
+$sin_estilo: none;
+$colorrh: #121212;
+$colora: #af7b2c;
+
+body {
+    font-family: $tipo_letra;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: $fondo;
+}
+
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: $negrita;
+    text-align: center;
+}
+
+//Mixin
+@mixin fn_formato($ancho_maximo: 50px) {
+    height: 4px;
+    background-color: $background_separador;
+    margin: 10px auto;
+}
+
+.separador {
+    @include fn_formato($ancho_maximo)
+}
+
+@mixin fn_formato1($ancho_maximo: 50px) {
+    text-align: left;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+.separador {
+    @include fn_formato($ancho_maximo)
+}
+
+//Operadores
+.cabecera-contacto {
+    margin-bottom: 10px * 2;
+    text-align: center;
+}
+
+.contenedor-contacto {
+    display: flex;
+    flex-direction: $columna;
+    align-items: center;
+    padding: 20px;
+    max-width: $ancho_maximo + 20%;
+    margin-top: 10px+70px;
+}
+
+
+//Funciones Anidadas
+.detalles-contacto {
+    text-align: left;
+    margin-bottom: 20px;
+    max-width: 800px;
+    width: $ancho_maximo;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    div {
+        flex: 1;
+    }
+
+    address {
+        font-style: normal;
+        line-height: 1.6;
+
+        span {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .icono {
+            margin-right: 10px;
+            color: $colorico;
+        }
+    }
+}
+
+//Funciones Anidadas
+.formulario-contacto {
+    flex: 1;
+    margin-left: 40px;
+    max-width: 500px;
+    width: $ancho_maximo;
+
+    input,
+    textarea,
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    button {
+        background-color: $colorico;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: red;
+        }
+    }
+}
+
+//Funciones Anidadas
+.contenedor-mapa {
+    margin-top: 20px;
+    max-width: 800px;
+    width: $ancho_maximo;
+
+    iframe {
+        border: none;
+        width: $ancho_maximo;
+        height: 300px;
+        border-radius: 5px;
+    }
+}
+
+// NAVEGACIÓN
+//Funciones Anidadas
+.header {
+    display: flex;
+    position: relative;
+
+    .nav-links {
+        list-style: $sin_estilo;
+
+        li {
+            display: inline-block;
+            padding: 0 20px;
+
+            a {
+                font-size: 18px;
+                color: black;
+                text-decoration: $sin_estilo;
+                color: $colorrh;
+                padding: 23px;
+                display: block;
+
+                &:hover {
+                    color: $colora;
+                }
+            }
+
+            &:hover {
+                transform: scale(1.1);
+                color: $colora;
+            }
+        }
+    }
+
+    //Funciones Anidadas
+    .menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+
+        ul {
+            list-style: $sin_estilo;
+
+            li {
+                position: relative;
+                float: left;
+
+                a {
+                    font-size: 18px;
+                    padding: 23px;
+                    color: #000000;
+                    display: block;
+                    font-weight: 600;
+                }
+
+                &:hover {
+                    transform: scale(1.1);
+                    color: $colora;
+                }
+            }
+        }
+    }
+
+    //Funciones Anidadas
+    label {
+        cursor: pointer;
+        display: $sin_estilo;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+
+        .logoImg {
+            height: 100px;
+            display: flex;
+            width: 25px;
+        }
+    }
+}
+
+//footer
+footer {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 20px 90px;
+    border-top: 1px solid #ddd;
+    justify-content: center;
+
+    .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: 250px;
+
+        .footer-section {
+            flex: 1;
+            margin: 10px;
+
+            h4 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: 5px;
+
+                    a {
+                        text-decoration: none;
+                        color: #000;
+                        font-size: 14px;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            p {
+                font-size: 14px;
+                color: #555;
+                margin: 10px 0;
+            }
+
+            input {
+                width: 60%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+            button {
+                background-color: #000;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+
+                &:hover {
+                    background-color: #444;
+                }
+            }
+
+            .social-icons {
+                display: flex;
+                gap: 10px;
+
+                a img {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+
+            .payment-icons img {
+                width: 50px;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 20px;
+
+        p {
+            font-size: 12px;
+            color: #777;
+        }
+    }
+}
